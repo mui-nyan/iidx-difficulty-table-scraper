@@ -19,7 +19,6 @@ def exh():
     html = urllib.request.urlopen(url)
 
     soup = BeautifulSoup(html, "html.parser")
-    musics = []
 
     refs = soup.select("h2")
     refs = filter(lambda s: bool(s.string), refs)
@@ -27,14 +26,14 @@ def exh():
     refs = map(lambda s: (s["id"], s.string[2:]), refs)
     refs = list(refs)
 
-    #print(refs)
-
     suffixes = [
         ("[H]", "H")
         , ("[A]", "A")
         , ("†", "L")
         , ("†LEGGENDARIA", "L")
     ]
+
+    musics = []
 
     for ref in refs:
         difficulty = ref[1]
@@ -58,5 +57,9 @@ if __name__ == "__main__":
     
     src = args.src
     
-    if src == "exh":
+    if src == "clear":
+        clear()
+    elif src == "hard":
+        hard()
+    elif src == "exh":
         exh()
