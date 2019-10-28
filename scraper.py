@@ -41,5 +41,4 @@ for ref in refs:
                 break
         musics.append((difficulty, title, mode))
 
-for music in musics:
-    print(music)
+print(json.dumps(musics, ensure_ascii=False))
